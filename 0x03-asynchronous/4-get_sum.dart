@@ -12,7 +12,7 @@ Future<double> calculateTotal() async {
     List<dynamic> orders = jsonDecode(ordersData) ?? [];
 
     if (orders.isEmpty) {
-      return 0.0;
+      return -1;
     }
 
     // Initializing start price
