@@ -10,7 +10,6 @@ Future<double> calculateTotal() async {
 
     String ordersData = await fetchUserOrders(userId);
     List<dynamic> orders = jsonDecode(ordersData) ?? [];
-    print('Orders: $orders');
 
     if (orders.isEmpty) {
       return 0.0;
@@ -27,7 +26,6 @@ Future<double> calculateTotal() async {
 
     return totalPrice;
   } catch (e) {
-    print('Error: $e');
     return -1;
   }
 }
