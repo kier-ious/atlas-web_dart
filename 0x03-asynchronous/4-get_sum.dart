@@ -12,6 +12,7 @@ Future<double> calculateTotal() async {
     List<dynamic> orders = jsonDecode(ordersData) ?? [];
 
     if (orders.isEmpty) {
+      print('No orders found for user: $userId');
       return -1;
     }
 
@@ -20,15 +21,15 @@ Future<double> calculateTotal() async {
     for (var product in orders) {
       var productPriceData = await fetchProductPrice(product);
       if (productPriceData == null) {
+        print('Failed to fetch price for product: $product');
         return -1;
       }
       var productPrice = jsonDecode(productPriceData);
       if (productPrice == null) {
+        print('Decoded price null for product: $product');
         return -1;
       }
-      // if (productPrice is int) {
-      //   productPrice = productPrice.toDouble();
-      // }
+
       // Add to total price
       totalPrice += productPrice;
     }
