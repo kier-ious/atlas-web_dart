@@ -24,9 +24,9 @@ Future<double> calculateTotal() async {
       if (productPrice == null) {
         return -1;
       }
-      if (productPrice is int) {
-        productPrice = productPrice.toDouble();
-      }
+      // if (productPrice is int) {
+      //   productPrice = productPrice.toDouble();
+      // }
       // Add to total price
       totalPrice += productPrice;
     }
