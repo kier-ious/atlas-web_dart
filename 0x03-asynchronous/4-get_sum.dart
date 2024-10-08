@@ -20,12 +20,11 @@ Future<double> calculateTotal() async {
     for (var product in orders) {
       var productPriceData = await fetchProductPrice(product);
       if (productPriceData == null) {
-        print('Failed to fetch price for product: $product');
         return -1;
       }
       var productPrice = jsonDecode(productPriceData);
-      if (productPrice is! num) {
-        print('Invalid product price type for product: $product, received: ${productPrice.runtimeType}');
+      if (productPrice == null) {
+        print('Decoded price null for product: $product');
         return -1;
       }
 
