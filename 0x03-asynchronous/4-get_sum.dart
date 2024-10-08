@@ -19,14 +19,17 @@ Future<double> calculateTotal() async {
     double totalPrice = 0.0;
     for (String product in orders) {
       String productPriceData = await fetchProductPrice(product);
-      var productPrice = jsonDecode(productPriceData);
-
-      if (productPrice == null) {
+      if (productPriceData == null) {
         return -1;
       }
-      // if (productPrice is int) {
-      //   productPrice = productPrice.toDouble();
-      // }
+
+      var productPrice = jsonDecode(productPriceData);
+      if (productPrice is int) {
+        return -1;
+      }
+      if (productPrice is int) {
+        productPrice = productPrice.toDouble();
+      }
       // Add to total price
       totalPrice += productPrice;
     }
