@@ -19,8 +19,10 @@ Future<double> calculateTotal() async {
     double totalPrice = 0.0;
     for (var product in orders) {
       var productPriceData = await fetchProductPrice(product);
+      if (productPriceData == null) {
+        return -1;
+      }
       var productPrice = jsonDecode(productPriceData);
-
       if (productPrice == null) {
         return -1;
       }
